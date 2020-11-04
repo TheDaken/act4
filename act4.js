@@ -7,9 +7,9 @@ const misNotas = [
 
 ]
 //crea una nueva nota (return numero de elementos length)
-console.log('----------1-----------');
+
 function crearNota(txta, txtb) {
-    misNotas.push({ titulo: txta, cuerpo: txtb })
+   return misNotas.push({ titulo: txta, cuerpo: txtb })
 }
 //borrar la nota que le pases(la tarea borrada)
 function borrarNota(nota, tit) {
@@ -61,8 +61,8 @@ function buscarTextoEnNotas2(nota,txt) {
 
 
 
-
-console.log('antes',misNotas.length);
+console.log('----------1-----------');
+console.log('Length antes de crear una nota',misNotas.length);
 crearNota('diario','quemar el diario')
 console.log('despues',misNotas.length);
 
@@ -72,11 +72,13 @@ console.log('------------------');
 console.log(misNotas);
 
 console.log('----------3-----------');
+console.log('Orden Con Titulos');
 console.log(ordenarNotas(misNotas,'titulo'));
-console.log('------------------------');
+console.log('-----Orden con Cuerpo------');
 console.log(ordenarNotas(misNotas,'cuerpo'));
 
 console.log('-------4--------');
+console.log('Buscando vscode en el titulo');
 console.log(misNotas[buscarTextoEnNotas(misNotas,'vscode',true)]);
-console.log('-----------------------');
-console.log(misNotas[buscarTextoEnNotas2(misNotas,'al')]);
+console.log('--Buscando medico en el cuepo--');
+console.log(misNotas[buscarTextoEnNotas(misNotas,'medico',false)]);
