@@ -13,7 +13,7 @@ function crearNota(txta, txtb) {
 }
 //borrar la nota que le pases(la tarea borrada)
 function borrarNota(nota, tit) {
-    let i = nota.findIndex(function(not){ return not.titulo === tit});
+    let i = nota.findIndex(function(not){ return not.titulo.toLowerCase() === tit.toLowerCase()});
     return nota.splice(i, 1);
 }
 //en el que le pases
@@ -40,15 +40,21 @@ function ordenarNotas(notas, a) {
     }
 }
 //en todo coje el texto (return tarea)
-function buscarTextoEnNotas(nota,txt,a) {
+function buscarTextoEnNotas(nota,txt) {
    
-    if(a){
-    return misNotas.findIndex(function(nota){
+   
+    const esta = misNotas.findIndex(function(nota){
         return nota.titulo.toLowerCase() === txt.toLowerCase();
-    });}else if(!a){
-        return misNotas.findIndex(function(nota){
+    });
+    const cuerpo = misNotas.findIndex(function(nota){
             return nota.cuerpo.toLowerCase().includes(txt.toLowerCase());
         });
+    if(esta >= 0){
+        return nota[esta]
+    }else if(cuerpo >= 0){
+        return nota[cuerpo]
+    }else{
+        return 'No se a Encontrado nada'
     }
 }
 function buscarTextoEnNotas2(nota,txt) {
@@ -67,7 +73,9 @@ crearNota('diario','quemar el diario')
 console.log('despues',misNotas.length);
 
 console.log('----------2-----------');
-console.log(borrarNota(misNotas, "Escalada"));
+console.log(misNotas);
+console.log('-----------------------');
+console.log(borrarNota(misNotas, "casa"));
 console.log('------------------');
 console.log(misNotas);
 
@@ -79,6 +87,7 @@ console.log(ordenarNotas(misNotas,'cuerpo'));
 
 console.log('-------4--------');
 console.log('Buscando vscode en el titulo');
-console.log(misNotas[buscarTextoEnNotas(misNotas,'vscode',true)]);
+console.log(buscarTextoEnNotas(misNotas,'vscode'));
 console.log('--Buscando medico en el cuepo--');
-console.log(misNotas[buscarTextoEnNotas(misNotas,'medico',false)]);
+console.log(buscarTextoEnNotas(misNotas,'rio'));
+console.log(buscarTextoEnNotas(misNotas,'tetera'));
