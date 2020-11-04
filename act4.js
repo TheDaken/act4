@@ -40,10 +40,16 @@ function ordenarNotas(notas, a) {
     }
 }
 //en todo coje el texto (return tarea)
-function buscarTextoEnNotas(nota,txt) {
+function buscarTextoEnNotas(nota,txt,a) {
    
     return misNotas.findIndex(function(nota){
         return nota.titulo.toLowerCase() === txt.toLowerCase();
+    });
+}
+function buscarTextoEnNotas2(nota,txt) {
+   
+    return misNotas.findIndex(function(nota){
+        return nota.cuerpo.toLowerCase().includes(txt.toLowerCase());
     });
 }
 
@@ -66,4 +72,4 @@ console.log('------------------------');
 console.log(ordenarNotas(misNotas,'cuerpo'));
 
 console.log('-------4--------');
-console.log(misNotas[buscarTextoEnNotas(misNotas,'cascada')]);
+console.log(misNotas[buscarTextoEnNotas2(misNotas,'al')]);
