@@ -1,4 +1,4 @@
-const misNotas = [
+/* const misNotas = [
     { titulo: "VSCode", cuerpo: "usar snipets" },
     { titulo: "Cascada", cuerpo: "ir a la cascada del rio" },
     { titulo: "Escalada", cuerpo: "Ir a escalar" },
@@ -8,9 +8,9 @@ const misNotas = [
 ]
 //crea una nueva nota (return numero de elementos length)
 
-function crearNota(notas,titulo, cuerpo) {
+const crearNota =(notas,titulo, cuerpo)=> {
     const indice = notas.findIndex(
-        function(nota){
+        (nota)=>{
             return nota.titulo == titulo
         }
     )
@@ -24,8 +24,8 @@ function crearNota(notas,titulo, cuerpo) {
    
 }
 //borrar la nota que le pases(la tarea borrada)
-function borrarNota(nota, tit) {
-    let i = nota.findIndex(function(not){ return not.titulo.toLowerCase() === tit.toLowerCase()});
+const borrarNota =(nota, tit)=> {
+    let i = nota.findIndex((not)=>{ return not.titulo.toLowerCase() === tit.toLowerCase()});
     
 
     if(i ===-1){
@@ -36,9 +36,9 @@ function borrarNota(nota, tit) {
         return nota.splice(i, 1);
     }
 }
-function borrarnota2(notas,tutulo){
+const borrarnota2=(notas,tutulo)=>{
     //filter no se mueve en la array principal crea otra
-    const notasFiltradas = notas.filter(function(nota){
+    const notasFiltradas = notas.filter((nota)=>{
         return nota.tutulo !== titulo
     })
     if(notas.length> notasFiltradas.length){
@@ -50,9 +50,9 @@ function borrarnota2(notas,tutulo){
     
 }
 //en el que le pases
-function ordenarNotas(notas, a) {
+const ordenarNotas=(notas, a)=> {
     if(a === 'titulo'){
-    return notas.sort(function (notaA, notaB) {
+    return notas.sort( (notaA, notaB)=> {
         if (notaA.titulo.toLowerCase() < notaB.titulo.toLowerCase()) {
             return -1
         } else if (notaA.titulo.toLowerCase() > notaB.titulo.toLowerCase()) {
@@ -61,7 +61,7 @@ function ordenarNotas(notas, a) {
             return 0
         }
     })}else{
-        return notas.sort(function (notaA, notaB) {
+        return notas.sort( (notaA, notaB)=> {
             if (notaA.cuerpo.toLowerCase() < notaB.cuerpo.toLowerCase()) {
                 return -1
             } else if (notaA.cuerpo.toLowerCase() > notaB.cuerpo.toLowerCase()) {
@@ -73,13 +73,13 @@ function ordenarNotas(notas, a) {
     }
 }
 //en todo coje el texto (return tarea)
-function buscarTextoEnNotas(nota,txt) {
+ const buscarTextoEnNotas = (nota,txt)=> {
    
    
-    const esta = misNotas.findIndex(function(nota){
+    const esta = misNotas.findIndex((nota)=>{
         return nota.titulo.toLowerCase() === txt.toLowerCase();
     });
-    const cuerpo = misNotas.findIndex(function(nota){
+    const cuerpo = misNotas.findIndex((nota)=>{
             return nota.cuerpo.toLowerCase().includes(txt.toLowerCase());
         });
     if(esta >= 0){
@@ -90,9 +90,9 @@ function buscarTextoEnNotas(nota,txt) {
         return 'No se a Encontrado nada'
     }
 }
-function buscarTextoEnNotas2(notas,txt) {
+const buscarTextoEnNotas2 = (notas,txt) =>{
    
-    const notaEncontrada = notas.find(function(nota){
+    const notaEncontrada = notas.find((nota)=>{
         return nota.titulo.toLowerCase().includes(txt) || nota.cuerpo.toLowerCase().includes(txt)
     })
     if(notaEncontrada){
@@ -131,4 +131,47 @@ console.log('Buscando vscode en el titulo');
 console.log(buscarTextoEnNotas(misNotas,'vscode'));
 console.log('--Buscando medico en el cuepo--');
 console.log(buscarTextoEnNotas(misNotas,'rio'));
-console.log(buscarTextoEnNotas(misNotas,'termo'));
+console.log(buscarTextoEnNotas(misNotas,'termo')); */
+
+
+
+const media = (cosa, ...items) => {
+    let suma = 0;
+    items.forEach((item) => {
+        suma += item
+    })
+    return `Tienes ${suma} ${cosa}`
+}
+console.log(media('manzanas', 1, 3, 4, 6, 7, 9));
+
+const deportistas = ['koeman', 'Messi', 'Xavi', 'Ronaldo']
+const imprimirEquipo = (entrenador, jugador1, jugador2, jugaodr3) => {
+    console.log(`Entrenador : ${entrenador}; Jugadores ${jugador1} ${jugador2} ${jugaodr3}`);
+}
+imprimirEquipo(...deportistas)
+
+const [entrenador, ...jugadores] = deportistas
+console.log(entrenador);
+console.log(jugadores);
+const deportistasCopia = [...deportistas,'pedro']
+console.log(deportistasCopia);
+
+const programadorX = {
+    nombre: 'Perico',
+    email:'perico@email.com',
+
+}
+
+const programadorY = {
+    nombre2: 'Pedro',
+    email2:'pedro@email.com',
+    github2:'https//:github.com/progY'
+    
+}
+const {nombre,email,github ="ttp://github.com/progX"} = programadorX
+
+const {nombre2,email2:correo,github2 ="ttp://github.com/progX"} = programadorY
+
+console.log(nombre2);
+console.log(correo);
+console.log(github2)
