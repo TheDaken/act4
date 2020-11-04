@@ -42,9 +42,14 @@ function ordenarNotas(notas, a) {
 //en todo coje el texto (return tarea)
 function buscarTextoEnNotas(nota,txt,a) {
    
+    if(a){
     return misNotas.findIndex(function(nota){
         return nota.titulo.toLowerCase() === txt.toLowerCase();
-    });
+    });}else if(!a){
+        return misNotas.findIndex(function(nota){
+            return nota.cuerpo.toLowerCase().includes(txt.toLowerCase());
+        });
+    }
 }
 function buscarTextoEnNotas2(nota,txt) {
    
@@ -72,4 +77,6 @@ console.log('------------------------');
 console.log(ordenarNotas(misNotas,'cuerpo'));
 
 console.log('-------4--------');
+console.log(misNotas[buscarTextoEnNotas(misNotas,'vscode',true)]);
+console.log('-----------------------');
 console.log(misNotas[buscarTextoEnNotas2(misNotas,'al')]);
